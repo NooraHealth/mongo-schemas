@@ -1,12 +1,16 @@
 
-Curriculums = require('./curriculums/curriculums.coffee').Curriculums
-Lessons = require('./lessons/lessons.coffee').Lessons
-Modules = require('./modules/modules.coffee').Modules
+import { Curriculums } from "meteor/mongo-schemas";
+import { Lessons } from "meteor/mongo-schemas";
+import { Modules } from "meteor/mongo-schemas";
+import { OfflineFiles } from "meteor/mongo-schemas";
 
-Meteor.publish "modules.inLesson", (lessonId) ->
-  if !lessonId then return []
-  lesson = Lessons.findOne {_id: lessonId}
-  return Modules.find {_id: {$in: lesson.modules}}
+Meteor.publish("modules.inLesson", (lessonId) =>
+  if( !lessonId ) {
+    return [];
+  }
+  let lesson = Lessons.findOne( {_id: lessonId} );
+  return Modules.find( {_id: {$in: lesson.modules}} );
+);
 
 Meteor.publish "curriculums.all", ->
   return Curriculums.find({})
