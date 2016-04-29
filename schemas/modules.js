@@ -1,5 +1,5 @@
 
-let Modules = new Mongo.Collection("nh_modules")
+let Modules = new Mongo.Collection("nh_modules");
 
 let ModuleSchema = new SimpleSchema({
   type: {
