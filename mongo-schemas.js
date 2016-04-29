@@ -1,11 +1,12 @@
 
-import { Curriculums } from "./schemas/curriculums.coffee"
-import { Lessons } from "./schemas/lessons.coffee"
-import { Modules } from "./schemas/modules.coffee"
-import { OfflineFiles } from "./schemas/offline_files.coffee"
+import { Curriculums as CurriculumSchema } from "./schemas/curriculums.coffee";
+import { Lessons as LessonsSchema } from "./schemas/lessons.coffee";
+import { Modules as ModulesSchema } from "./schemas/modules.coffee";
+import { OfflineFiles as OfflineFilesSchema } from "./schemas/offline_files.coffee";
 
 export const name = 'mongo-schemas';
-export const Curriculums = Curriculums;
-export const Lessons = Lessons;
-export const Modules = Modules;
-export const OfflineFiles = OfflineFiles;
+export const Curriculums = CurriculumSchema;
+console.log("CURRICULUMS", Curriculums);
+export const Lessons = LessonsSchema;
+export const Modules = ModulesSchema;
+export const OfflineFiles = OfflineFilesSchema;
