@@ -17,12 +17,14 @@ Package.onUse(function(api) {
   api.use('aldeed:collection2@2.9.1');
   api.use('mdg:validation-error@0.1.0');
   api.use('ground:db@0.3.15');
+
   api.addFiles([
     'schemas/curriculums.js',
     'schemas/lessons.js',
     'schemas/modules.js',
-    'schemas/offline_files.js'
+    'schemas/offline_files.js',
   ]);
+  api.addFiles('publications/publications.js', "server");
   
   api.mainModule('mongo-schemas.js');
 });

@@ -21,6 +21,7 @@ Curriculums.attachSchema( CurriculumSchema );
 
 Curriculums.helpers({
   getLessonDocuments: () => {
+    console.log("getting the lessonDocs");
     if( this.lessons )
       return this.lessons.map( function( lesson, index ){
         return Lessons.findOne( {_id: lesson._id} );

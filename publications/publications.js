@@ -1,8 +1,8 @@
 
-import { Curriculums } from "meteor/mongo-schemas";
-import { Lessons } from "meteor/mongo-schemas";
-import { Modules } from "meteor/mongo-schemas";
-import { OfflineFiles } from "meteor/mongo-schemas";
+import { Curriculums } from '../schemas/curriculums.js';
+import { Lessons } from '../schemas/lessons.js';
+import { Modules } from '../schemas/modules.js';
+import { OfflineFiles } from '../schemas/offline_files.js';
 
 Meteor.publish("modules.inLesson", function(lessonId) {
   if( !lessonId ) {
