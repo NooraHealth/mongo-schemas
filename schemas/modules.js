@@ -47,7 +47,7 @@ Modules.attachSchema( ModuleSchema );
 
 Modules.helpers({
 
-  isEmbedded: () => {
+  isEmbedded: function() {
     if( this.video_url )
       return this.video_url.startsWith( "http" );
     else

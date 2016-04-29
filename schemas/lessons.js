@@ -24,7 +24,7 @@ let LessonSchema = new SimpleSchema({
 Lessons.attachSchema( LessonSchema );
 
 Lessons.helpers({
-  getModulesSequence: ()=> {
+  getModulesSequence: function() {
     if( this.modules )
       return this.modules.map( ( module ) => {
         return Modules.findOne( {_id: module._id} );

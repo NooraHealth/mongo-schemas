@@ -20,8 +20,7 @@ let CurriculumSchema = new SimpleSchema({
 Curriculums.attachSchema( CurriculumSchema );
 
 Curriculums.helpers({
-  getLessonDocuments: () => {
-    console.log("getting the lessonDocs");
+  getLessonDocuments: function() {
     if( this.lessons )
       return this.lessons.map( function( lesson, index ){
         return Lessons.findOne( {_id: lesson._id} );
