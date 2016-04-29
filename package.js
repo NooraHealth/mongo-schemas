@@ -12,13 +12,11 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.3.1');
-  api.use(
-    'ecmascript',
-    'aldeed:simple-schema@1.5.3',
-    'aldeed:collection2@2.9.1',
-    'mdg:validation-error@0.1.0',
-    'ground:db@0.3.15'
-  );
+  api.use('ecmascript');
+  api.use('aldeed:simple-schema@1.5.3');
+  api.use('aldeed:collection2@2.9.1');
+  api.use('mdg:validation-error@0.1.0');
+  api.use('ground:db@0.3.15');
 
   api.mainModule('mongo-schemas.js');
 });
