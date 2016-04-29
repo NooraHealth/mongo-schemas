@@ -2,7 +2,7 @@ Package.describe({
   name: 'noorahealth:mongo-schemas',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: 'Noora Healths mongo schemas, including Curriculums, Lessons, and Modules'
+  summary: 'Noora Healths mongo schemas, including Curriculums, Lessons, and Modules',
   // URL to the Git repository containing the source code for this package.
   git: 'http://github.com/noorahealth/mongo-schemas',
   // By default, Meteor will default to using README.md for documentation.
