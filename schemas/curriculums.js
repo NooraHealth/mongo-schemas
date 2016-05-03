@@ -21,11 +21,11 @@ Curriculums.attachSchema( CurriculumSchema );
 
 Curriculums.helpers({
   getLessonDocuments: function() {
-    if( this.lessons )
-      return this.lessons.map( function( lesson, index ){
-        return Lessons.findOne( {_id: lesson._id} );
+    if( this.lessons ) {
+      return this.lessons.map( function( id ){
+        return Lessons.findOne( {_id: id} );
       });
-    else
+    } else
       return [];
   }
 });

@@ -12,6 +12,14 @@ Meteor.publish("modules.inLesson", function(lessonId) {
   return Modules.find( {_id: {$in: lesson.modules}} );
 });
 
+Meteor.publish("lessons.all", function() {
+  return Lessons.find({});
+});
+
+Meteor.publish("modules.all", function() {
+  return Modules.find({});
+});
+
 Meteor.publish("curriculums.all", function() {
   return Curriculums.find({});
 });

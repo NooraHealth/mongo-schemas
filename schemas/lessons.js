@@ -26,8 +26,8 @@ Lessons.attachSchema( LessonSchema );
 Lessons.helpers({
   getModulesSequence: function() {
     if( this.modules )
-      return this.modules.map( ( module ) => {
-        return Modules.findOne( {_id: module._id} );
+      return this.modules.map( ( id ) => {
+        return Modules.findOne( {_id: id} );
       });
   }
 });
