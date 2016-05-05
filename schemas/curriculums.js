@@ -6,11 +6,11 @@ let Curriculums = new Mongo.Collection("nh_home_pages");
 let CurriculumSchema = new SimpleSchema({
   title: {
     type:String,
+    min: 1,
     max: 40
   },
   lessons: {
-    type:[String],
-    minCount:1
+    type:[String]
   }
 });
 
