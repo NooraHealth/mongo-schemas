@@ -3,6 +3,7 @@ let Modules = new Mongo.Collection("nh_modules");
 
 let ModuleSchema = new SimpleSchema({
   type: {
+    regex: /MULTIPLE_CHOICE|SCENARIO|BINARY|VIDEO|SLIDE/,
     type: String
   },
   title: {
@@ -23,10 +24,6 @@ let ModuleSchema = new SimpleSchema({
   },
   correct_answer: {
     type: [String],
-    optional: true
-  },
-  incorrect_audio: {
-    type: String,
     optional: true
   },
   correct_audio: {

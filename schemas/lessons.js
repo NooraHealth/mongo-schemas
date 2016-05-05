@@ -7,10 +7,6 @@ let LessonSchema = new SimpleSchema({
   title: {
     type:String
   },
-  icon: {
-    type: String,
-    optional:true
-  },
   image: {
     type: String,
     optional:true
