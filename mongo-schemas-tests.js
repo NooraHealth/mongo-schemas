@@ -10,6 +10,15 @@ import { OfflineFiles } from "meteor/mongo-schemas";
 
 // Write your tests here!
 // Here is an example.
-Tinytest.add('mongo-schemas', function (test) {
+Tinytest.add('Curriculums', function (test) {
   test.equal(packageName, "mongo-schemas");
 });
+
+Tinytest.add('Lessons', function (test) {
+  test.equal(packageName, "mongo-schemas");
+});
+
+Tinytest.add('Modules', function (test) {
+  test.equal(packageName, "mongo-schemas");
+});
+

@@ -5,7 +5,8 @@ let Lessons = new Mongo.Collection("nh_lessons");
 
 let LessonSchema = new SimpleSchema({
   title: {
-    type:String
+    type:String,
+    max: 50
   },
   image: {
     type: String,
