@@ -16,6 +16,7 @@ Package.onUse(function(api) {
   api.use('aldeed:simple-schema@1.5.3');
   api.use('aldeed:collection2@2.9.1');
   api.use('mdg:validation-error@0.1.0');
+  api.use('dburles:collection-helpers@1.0.4');
   api.use('ground:db@0.3.15');
 
   api.addFiles([
@@ -31,7 +32,22 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('ecmascript');
-  api.use('tinytest');
+  api.use('aldeed:simple-schema@1.5.3');
+  api.use('aldeed:collection2@2.9.1');
+  api.use('mdg:validation-error@0.1.0');
+  api.use('ground:db@0.3.15');
+  api.use('practicalmeteor:mocha');
+  api.use('practicalmeteor:chai');
+  api.use('dburles:collection-helpers@1.0.4');
+  api.use('xolvio:cleaner');
   api.use('noorahealth:mongo-schemas');
+
+  api.addFiles([
+    'tests/curriculums-tests.js',
+    'tests/lessons-tests.js',
+    'tests/modules-tests.js',
+    'tests/offline-files-tests.js'
+  ]);
+
   api.mainModule('mongo-schemas-tests.js');
 });

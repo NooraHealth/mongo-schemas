@@ -1,14 +1,16 @@
 
-// Import Tinytest from the tinytest Meteor package.
-import { Tinytest } from "meteor/tinytest";
 
-// Import and rename a variable exported by mongo-schemas.js.
-import { Curriculums } from "meteor/mongo-schemas";
+import { Curriculums } from "meteor/noorahealth:mongo-schemas";
+import { chai } from 'meteor/practicalmeteor:chai';
 
-// Write your tests here!
-// Here is an example.
-Tinytest.add('Curriculums', function (test) {
-  console.log("CURRICULMS LEGTH");
-  console.log(Curriculums.find({}));
-  test.equal(packageName, "mongo-schemas");
+describe("Curriculum Schema", ()=> {
+  
+  it("Should be true", () => {
+    should = chai.should();
+    should.equal(1,1);
+  });
 });
+
+
+
+

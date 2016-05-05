@@ -1,24 +1,7 @@
-// Import Tinytest from the tinytest Meteor package.
-import { Tinytest } from "meteor/tinytest";
 
-// Import and rename a variable exported by mongo-schemas.js.
-import { name as packageName } from "meteor/mongo-schemas";
-import { Curriculums } from "meteor/mongo-schemas";
-import { Lessons } from "meteor/mongo-schemas";
-import { Modules } from "meteor/mongo-schemas";
-import { OfflineFiles } from "meteor/mongo-schemas";
-
-// Write your tests here!
-// Here is an example.
-Tinytest.add('Curriculums', function (test) {
-  test.equal(packageName, "mongo-schemas");
-});
-
-Tinytest.add('Lessons', function (test) {
-  test.equal(packageName, "mongo-schemas");
-});
-
-Tinytest.add('Modules', function (test) {
-  test.equal(packageName, "mongo-schemas");
-});
+// Import the test files
+import './tests/curriculums-tests.js';
+import './tests/lessons-tests.js';
+import './tests/modules-tests.js';
+import './tests/offline-files-tests.js';
 
