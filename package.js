@@ -47,7 +47,7 @@ Package.onTest(function(api) {
     'tests/lessons-tests.js',
     'tests/modules-tests.js',
     'tests/offline-files-tests.js'
-  ]);
+  ], "server");
 
-  api.mainModule('mongo-schemas-tests.js');
+  api.mainModule('mongo-schemas-tests.js', "server");
 });
