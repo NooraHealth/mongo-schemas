@@ -10,11 +10,10 @@ let LessonSchema = new SimpleSchema({
   },
   image: {
     type: String,
-    optional:true
+    regEx: /^[A-Za-z1-9]+\.(?:jpg|jpeg|png)$/
   },
   modules: {
-    type: [String],
-    optional:true
+    type: [String]
   }
 });
 

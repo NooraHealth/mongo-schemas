@@ -3,8 +3,8 @@ let Modules = new Mongo.Collection("nh_modules");
 
 let ModuleSchema = new SimpleSchema({
   type: {
-    type: String
-    //regex: /MULTIPLE_CHOICE|SCENARIO|BINARY|VIDEO|SLIDE/,
+    type: String,
+    regEx: /(MULTIPLE_CHOICE|SCENARIO|BINARY|VIDEO|SLIDE)/
   },
   title: {
     type: String,

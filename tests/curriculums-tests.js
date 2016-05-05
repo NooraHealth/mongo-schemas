@@ -28,6 +28,20 @@ describe("Curriculum Schema", ()=> {
     });
   });
 
+  it("Should reject a curriculum with no title", (done) => {
+    let noTitle = {
+      lessons: []
+    };
+
+    Curriculums.insert( noTitle, function(error, id){
+      setTimeout(function(){
+        should.not.equal(null, error);
+        should.equal(false, id);
+        done();
+      });
+    });
+  });
+
   it("Should reject a curriculum with too long a title", (done) => {
     let title = "";
     for(var i = 0; i <= 41; i++) {
