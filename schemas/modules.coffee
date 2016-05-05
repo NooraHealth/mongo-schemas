@@ -11,6 +11,7 @@ Modules = new Mongo.Collection("nh_modules")
 
 ModuleSchema = new SimpleSchema
   type:
+    regex: /MULTIPLE_CHOICE|BINARY|SCENARIO|SLIDE|VIDEO/
     type:String
   title:
     type:String
@@ -30,9 +31,6 @@ ModuleSchema = new SimpleSchema
     optional:true
   correct_answer:
     type:[String]
-    optional:true
-  incorrect_audio:
-    type:String
     optional:true
   correct_audio:
     type:String

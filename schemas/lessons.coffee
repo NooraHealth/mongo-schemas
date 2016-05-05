@@ -6,9 +6,6 @@ Lessons = new Mongo.Collection("nh_lessons")
 LessonSchema = new SimpleSchema
   title:
     type:String
-  icon:
-    type: String
-    optional:true
   image:
     type: String
     optional:true
