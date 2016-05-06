@@ -43,19 +43,19 @@ Package.onTest(function(api) {
   api.use('noorahealth:mongo-schemas');
 
   api.addFiles([
-    'tests/curriculums-tests.js',
-    'tests/lessons-tests.js',
-    'tests/offline-files-tests.js',
-    'tests/modules-tests.js',
+    'tests/curriculums/schema.js',
+    'tests/curriculums/helpers.js',
+    'tests/lessons/schema.js',
+    'tests/lessons/helpers.js',
     'tests/modules/audio-validation.js',
     'tests/modules/correct-audio-validation.js',
-    'tests/modules/helpers-tests.js',
-    'tests/modules/image-validation.js',
-    'tests/modules/question-validation.js',
-    'tests/modules/title-validation.js',
-    'tests/modules/type-validation.js',
-    'tests/modules/video-validation.js'
+    //'tests/modules/helpers-tests.js',
+    //'tests/modules/image-validation.js',
+    //'tests/modules/question-validation.js',
+    //'tests/modules/title-validation.js',
+    //'tests/modules/type-validation.js',
+    //'tests/modules/video-validation.js',
+    //'tests/modules/options-validation.js'
   ], "server");
 
-  api.mainModule('mongo-schemas-tests.js', "server");
 });

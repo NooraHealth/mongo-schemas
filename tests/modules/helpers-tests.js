@@ -8,7 +8,8 @@ describe("Modules Helpers", ()=> {
 
   it("Should have a helper isCorrectAnswer", (done) => {
     let validModule = {
-      type: "BINARY"
+      type: "SLIDE",
+      title: "Title"
     };
 
     Modules.insert( validModule, function(error, id){

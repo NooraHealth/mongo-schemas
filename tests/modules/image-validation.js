@@ -6,9 +6,62 @@ should = chai.should();
 
 describe("Modules Image Validation", ()=> {
 
+  it("Should reject a doc with no image if it is a SCENARIO", (done) => {
+    let noImage = {
+      type: "SCENARIO",
+      correct_answer: ['Normal'],
+      image: "img:something.png"
+    };
+
+
+    Modules.insert( noImage, function(error, id){
+      setTimeout(function(){
+        console.log(error);
+        should.not.equal(null, error);
+        should.equal(false, id);
+        done();
+      });
+    });
+  });
+
+  it("Should reject a doc with no image if it is a BINARY", (done) => {
+    let noImage = {
+      type: "BINARY",
+      question: "Question",
+      correct_answer: ['No']
+    };
+
+    Modules.insert( noImage, function(error, id){
+      setTimeout(function(){
+        console.log(error);
+        should.not.equal(null, error);
+        should.equal(false, id);
+        done();
+      });
+    });
+  });
+
+  it("Should reject a doc with no image if it is a SLIDE", (done) => {
+    let noImage = {
+      type: "SLIDE",
+      title: 'Title',
+      image: "img:something.png"
+    };
+
+
+    Modules.insert( noImage, function(error, id){
+      setTimeout(function(){
+        should.not.equal(null, error);
+        should.equal(false, id);
+        done();
+      });
+    });
+  });
+
   it("Should reject the doc when the image has a colon in the name", (done) => {
     let withColon = {
-      type: "SCENARIO",
+      type: "SLIDE",
+      title: 'Title',
       image: "img:something.png"
     };
 
@@ -24,7 +77,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should reject the doc when the image has a space in the name", (done) => {
     let withSpace = {
-      type: "SCENARIO",
+      type: "SLIDE",
+      title: 'Title',
       image: "img: something.png"
     };
 
@@ -40,7 +94,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should reject the doc when the image has a underscore in the name", (done) => {
     let withUnderscore = {
-      type: "SCENARIO",
+      type: "SLIDE",
+      title: 'Title',
       image: "img_with__underscore.png"
     };
 
@@ -55,7 +110,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should reject the doc when the image has a dash in the name", (done) => {
     let withDash = {
-      type: "BINARY",
+      type: "SLIDE",
+      title: 'Title',
       image: "img-something.png"
     };
 
@@ -70,7 +126,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should accept images with numbers in the name", (done) => {
     let numbers = {
-      type: "MULTIPLE_CHOICE",
+      type: "SLIDE",
+      title: 'Title',
       image: "1324234.png"
     };
 
@@ -85,7 +142,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should accept images of type .jpeg", (done) => {
     let jpeg = {
-      type: "MULTIPLE_CHOICE",
+      type: "SLIDE",
+      title: 'Title',
       image: "image.jpeg"
     };
 
@@ -100,7 +158,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should accept images of type .png", (done) => {
     let png = {
-      type: "MULTIPLE_CHOICE",
+      type: "SLIDE",
+      title: 'Title',
       image: "image.png"
     };
 
@@ -115,7 +174,8 @@ describe("Modules Image Validation", ()=> {
 
   it("Should accept images of type .jpg", (done) => {
     let jpg = {
-      type: "MULTIPLE_CHOICE",
+      type: "SLIDE",
+      title: 'Title',
       image: "image.jpg"
     };
 
