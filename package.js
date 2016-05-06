@@ -50,7 +50,7 @@ Package.onTest(function(api) {
     'tests/modules/audio-validation.js',
     'tests/modules/correct-audio-validation.js',
     'tests/modules/helpers-tests.js',
-    //'tests/modules/image-validation.js',
+    'tests/modules/image-validation.js',
     //'tests/modules/question-validation.js',
     //'tests/modules/title-validation.js',
     //'tests/modules/type-validation.js',

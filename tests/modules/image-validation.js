@@ -10,14 +10,15 @@ describe("Modules Image Validation", ()=> {
     let noImage = {
       type: "SCENARIO",
       correct_answer: ['Normal'],
-      image: "img:something.png"
+      audio: "audio.wav",
+      correct_audio: "correct.wav",
     };
-
 
     Modules.insert( noImage, function(error, id){
       setTimeout(function(){
-        console.log(error);
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -27,14 +28,16 @@ describe("Modules Image Validation", ()=> {
   it("Should reject a doc with no image if it is a BINARY", (done) => {
     let noImage = {
       type: "BINARY",
-      question: "Question",
-      correct_answer: ['No']
+      correct_answer: ['No'],
+      audio: "audio.wav",
+      correct_audio: "correct.wav",
     };
 
     Modules.insert( noImage, function(error, id){
       setTimeout(function(){
-        console.log(error);
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -45,13 +48,15 @@ describe("Modules Image Validation", ()=> {
     let noImage = {
       type: "SLIDE",
       title: 'Title',
-      image: "img:something.png"
+      audio: 'audio.wav'
     };
 
 
     Modules.insert( noImage, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -62,6 +67,7 @@ describe("Modules Image Validation", ()=> {
     let withColon = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "img:something.png"
     };
 
@@ -69,6 +75,8 @@ describe("Modules Image Validation", ()=> {
     Modules.insert( withColon, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -79,6 +87,7 @@ describe("Modules Image Validation", ()=> {
     let withSpace = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "img: something.png"
     };
 
@@ -86,6 +95,8 @@ describe("Modules Image Validation", ()=> {
     Modules.insert( withSpace, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -96,12 +107,15 @@ describe("Modules Image Validation", ()=> {
     let withUnderscore = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "img_with__underscore.png"
     };
 
     Modules.insert( withUnderscore, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -112,12 +126,15 @@ describe("Modules Image Validation", ()=> {
     let withDash = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "img-something.png"
     };
 
     Modules.insert( withDash, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys[0].name, "image");
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -128,6 +145,7 @@ describe("Modules Image Validation", ()=> {
     let numbers = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "1324234.png"
     };
 
@@ -144,6 +162,7 @@ describe("Modules Image Validation", ()=> {
     let jpeg = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "image.jpeg"
     };
 
@@ -160,6 +179,7 @@ describe("Modules Image Validation", ()=> {
     let png = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "image.png"
     };
 
@@ -176,6 +196,7 @@ describe("Modules Image Validation", ()=> {
     let jpg = {
       type: "SLIDE",
       title: 'Title',
+      audio: 'audio.wav',
       image: "image.jpg"
     };
 
