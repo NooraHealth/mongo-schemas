@@ -8,35 +8,49 @@ let ModuleSchema = new SimpleSchema({
   },
   title: {
     type: String,
-    optional: true
+    optional: true,
+    max: 100
   },
   image: {
     type: String,
-    optional: true
+    optional: true,
+    regEx: /^[A-Za-z1-9]+\.(?:jpg|jpeg|png)$/
   },
   question: {
     type: String,
-    optional: true
+    optional: true,
+    max: 150
   },
   options: {
     type: [String],
-    optional: true
+    optional: true,
+    custom: function() {
+      console.log("In the custom validator for options");
+      console.log(this);
+    }
   },
   correct_answer: {
     type: [String],
-    optional: true
+    optional: true,
+    custom: function() {
+      //console.log("In the custom validator for options");
+      //console.log(this);
+    }
   },
   correct_audio: {
     type: String,
-    optional: true
+    optional: true,
+    regEx: /^[A-Za-z1-9]+\.(?:m4a|mp3|wav|ogg|aac)$/
   },
   video: {
     type: String,
-    optional: true
+    optional: true,
+    regEx: /^[A-Za-z1-9]+\.(mp4|mov)$/
   },
   audio: {
     type: String,
-    optional: true
+    optional: true,
+    regEx: /^[A-Za-z1-9]+\.(m4a|mp3|wav|ogg|aac)$/
   }
 });
 
@@ -52,7 +66,7 @@ Modules.helpers({
   },
 
   isCorrectAnswer: function( response ){
-    return this.correct_answer.includes( response );
+    return this.correct_answer.indexOf( response ) != -1;
   }
 
 });

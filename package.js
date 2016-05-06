@@ -45,8 +45,16 @@ Package.onTest(function(api) {
   api.addFiles([
     'tests/curriculums-tests.js',
     'tests/lessons-tests.js',
+    'tests/offline-files-tests.js',
     'tests/modules-tests.js',
-    'tests/offline-files-tests.js'
+    'tests/modules/audio-validation.js',
+    'tests/modules/correct-audio-validation.js',
+    'tests/modules/helpers-tests.js',
+    'tests/modules/image-validation.js',
+    'tests/modules/question-validation.js',
+    'tests/modules/title-validation.js',
+    'tests/modules/type-validation.js',
+    'tests/modules/video-validation.js'
   ], "server");
 
   api.mainModule('mongo-schemas-tests.js', "server");
