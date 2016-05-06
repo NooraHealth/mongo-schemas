@@ -85,8 +85,6 @@ let ModuleSchema = new SimpleSchema({
           return "Invalid options for SCENARIO module: should be " + SCENARIO_OPTIONS;
         for( let option of this.value ) {
           if ( SCENARIO_OPTIONS.indexOf(option) == -1 ) {
-            console.log("Did not find this option: ", option);
-            console.log(this.value)
             return "Invalid options for SCENARIO module: should be " + SCENARIO_OPTIONS;
           }
         }
@@ -114,16 +112,18 @@ let ModuleSchema = new SimpleSchema({
       type = this.field("type").value;
       options = this.field("options");
 
+      if( define.isQuestion(type) && this.value === undefined )
+        return "Module of type " + type + " requires a correct_answer to be defined";
+
       if(type == "SCENARIO") {
         let isValid = this.value.length == 1 && SCENARIO_OPTIONS.indexOf(this.value[0]) != -1;
-      if( !isValid )
-          return "Invalid correct_answer for SCENARIO module: must be either " + BINARY_OPTIONS;
+        if( !isValid )
+            return "Invalid correct_answer for SCENARIO module: must be either " + BINARY_OPTIONS;
       } else if(type == "BINARY") {
         let isValid = this.value.length == 1 && BINARY_OPTIONS.indexOf(this.value[0]) != -1;
         if( !isValid )
           return "Invalid correct_answer for BINARY module: must be either " + BINARY_OPTIONS;
       }
-
       else if(type == "MULTIPLE_CHOICE") {
         //If an answer is not in the options then return false
         for( let answer of this.value ) {
