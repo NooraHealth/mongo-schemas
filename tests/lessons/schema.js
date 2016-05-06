@@ -33,6 +33,8 @@ describe("Lessons Schema", ()=> {
     Lessons.insert( noTitle, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "title");
         should.equal(false, id);
         done();
       });
@@ -47,12 +49,15 @@ describe("Lessons Schema", ()=> {
 
     let titleTooLong = {
       title: title,
-      lessons: []
+      modules: [],
+      image: "image.png"
     };
 
     Lessons.insert( titleTooLong, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "title");
         should.equal(false, id);
         done();
       });
@@ -68,6 +73,8 @@ describe("Lessons Schema", ()=> {
     Lessons.insert( noImage, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "image");
         should.equal(false, id);
         done();
       });
@@ -85,6 +92,8 @@ describe("Lessons Schema", ()=> {
     Lessons.insert( withColon, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "image");
         should.equal(false, id);
         done();
       });
@@ -102,6 +111,8 @@ describe("Lessons Schema", ()=> {
     Lessons.insert( withSpace, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "image");
         should.equal(false, id);
         done();
       });
@@ -118,6 +129,8 @@ describe("Lessons Schema", ()=> {
     Lessons.insert( withUnderscore, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "image");
         should.equal(false, id);
         done();
       });
@@ -134,6 +147,8 @@ describe("Lessons Schema", ()=> {
     Lessons.insert( withDash, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(error.invalidKeys[0].name, "image");
         should.equal(false, id);
         done();
       });
