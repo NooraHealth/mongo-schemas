@@ -103,8 +103,6 @@ describe("Modules Type Validation", ()=> {
 
     Modules.insert( doc, function(error, id){
       setTimeout(function(){
-        console.log("TYPE UNKNOWN");
-        console.log(error);
         should.not.equal(null, error);
         should.equal(false, id);
         should.exist(error.sanitizedError);
