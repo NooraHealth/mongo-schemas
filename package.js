@@ -53,8 +53,8 @@ Package.onTest(function(api) {
     'tests/modules/image-validation.js',
     'tests/modules/title-validation.js',
     'tests/modules/type-validation.js',
-    //'tests/modules/video-validation.js',
-    //'tests/modules/options-validation.js'
+    'tests/modules/video-validation.js',
+    'tests/modules/options-validation.js'
   ], "server");
 
 });
