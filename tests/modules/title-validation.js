@@ -105,7 +105,6 @@ describe("Modules Title and Question Validation", ()=> {
 
     Modules.insert( title, function(error, id){
       setTimeout(function(){
-        console.log(error);
         should.not.equal(null, error);
         should.equal("title", error.invalidKeys[0].name);
         should.equal( error.invalidKeys.length, 1);
@@ -119,6 +118,7 @@ describe("Modules Title and Question Validation", ()=> {
     let title = {
       type: "SCENARIO",
       title: "Some title",
+      image: "image.png",
       question: "Question",
       correct_answer: ['Call911'],
       audio: "audio.wav",
@@ -127,6 +127,7 @@ describe("Modules Title and Question Validation", ()=> {
 
     Modules.insert( title, function(error, id){
       setTimeout(function(){
+        console.log(error);
         should.not.equal(null, error);
         should.equal("title", error.invalidKeys[0].name);
         should.equal( error.invalidKeys.length, 1);
@@ -141,6 +142,7 @@ describe("Modules Title and Question Validation", ()=> {
       type: "BINARY",
       title: "Some title",
       question: "Question",
+      image: "image.png",
       correct_answer: ['No'],
       audio: "audio.wav",
       correct_audio: "correctaudio.mp3"
