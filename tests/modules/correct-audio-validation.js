@@ -19,7 +19,6 @@ describe("Modules Correct Audio Validation", ()=> {
     Modules.insert( withColon, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
-        console.log(error.invalidKeys);
         should.equal("correct_audio", error.invalidKeys[0].name);
         should.equal(error.invalidKeys.length, 1);
         should.equal(false, id);

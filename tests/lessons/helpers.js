@@ -61,6 +61,7 @@ describe("Lessons Helpers", ()=> {
       lesson = Lessons.findOne({_id: id});
       docs = lesson.getModulesSequence();
       setTimeout(function(){
+        console.log(error);
         should.exist(id);
         should.exist(lesson.getModulesSequence);
         should.equal(docs.length, 1);

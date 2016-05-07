@@ -5,7 +5,7 @@ import { chai } from 'meteor/practicalmeteor:chai';
 
 should = chai.should();
 
-describe("Modules Title Validation", ()=> {
+describe("Modules Title and Question Validation", ()=> {
 
   it("Should accept a module with a title less than 100chars", (done) => {
     let text = "";
@@ -14,8 +14,9 @@ describe("Modules Title Validation", ()=> {
     }
 
     let title = {
+      type: "VIDEO",
       title: text,
-      type: "VIDEO"
+      video: "video.mp4"
     };
 
     Modules.insert( title, function(error, id){
@@ -35,9 +36,12 @@ describe("Modules Title Validation", ()=> {
     }
 
     let question = {
+      type: "BINARY",
+      image: "image.png",
+      correct_answer: ['No'],
+      audio: "audio.wav",
+      correct_audio: "correct.wav",
       question: text,
-      type: "SCENARIO",
-      correct_answer: ['Call911']
     };
 
     Modules.insert( question, function(error, id){
@@ -52,12 +56,17 @@ describe("Modules Title Validation", ()=> {
   it("Should reject a module with a question if it is a SLIDE", (done) => {
     let question = {
       type: "SLIDE",
-      question: "Some Question"
+      title: "title",
+      question: "Some Question",
+      audio: "audio.mp3",
+      image: "image.png"
     };
 
     Modules.insert( question, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("question", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -67,12 +76,16 @@ describe("Modules Title Validation", ()=> {
   it("Should reject a module with a question if it is a VIDEO", (done) => {
     let question = {
       type: "VIDEO",
+      title: "Title",
+      video: "video.mp4",
       question: "Some question"
     };
 
     Modules.insert( question, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("question", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -82,14 +95,20 @@ describe("Modules Title Validation", ()=> {
   it("Should reject a module with a title if it is a MULTIPLE_CHOICE", (done) => {
     let title = {
       type: "MULTIPLE_CHOICE",
+      question: "Question",
       title: "Some title",
       options: ['one.png', 'two.png', 'three.png', 'four.png', 'five.png', 'six.png'],
-      correct_answer: ['one.png']
+      correct_answer: ['one.png'],
+      audio: "audio.wav",
+      correct_audio: "correctaudio.mp3"
     };
 
     Modules.insert( title, function(error, id){
       setTimeout(function(){
+        console.log(error);
         should.not.equal(null, error);
+        should.equal("title", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -100,12 +119,17 @@ describe("Modules Title Validation", ()=> {
     let title = {
       type: "SCENARIO",
       title: "Some title",
-      correct_answer: ['Call911']
+      question: "Question",
+      correct_answer: ['Call911'],
+      audio: "audio.wav",
+      correct_audio: "correctaudio.mp3"
     };
 
     Modules.insert( title, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("title", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -116,14 +140,17 @@ describe("Modules Title Validation", ()=> {
     let title = {
       type: "BINARY",
       title: "Some title",
-      correct_answer: ['No']
+      question: "Question",
+      correct_answer: ['No'],
+      audio: "audio.wav",
+      correct_audio: "correctaudio.mp3"
     };
 
     Modules.insert( title, function(error, id){
       setTimeout(function(){
-        console.log("The error");
-        console.log(error);
         should.not.equal(null, error);
+        should.equal("title", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -132,12 +159,15 @@ describe("Modules Title Validation", ()=> {
 
   it("Should reject a module with no title if it is a VIDEO", (done) => {
     let noTitle = {
-      type: "VIDEO"
+      type: "VIDEO",
+      video: "video.mp4"
     };
 
     Modules.insert( noTitle, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("title", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -146,12 +176,16 @@ describe("Modules Title Validation", ()=> {
 
   it("Should reject a module with no title if it is a SLIDE", (done) => {
     let noTitle = {
-      type: "SLIDE"
+      type: "SLIDE",
+      audio: "audio.ogg",
+      image: "image.png"
     };
 
     Modules.insert( noTitle, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("title", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -166,12 +200,16 @@ describe("Modules Title Validation", ()=> {
 
     let titleTooLong = {
       title: title,
-      type: "SLIDE"
+      type: "SLIDE",
+      audio: "audio.ogg",
+      image: "image.png"
     };
 
     Modules.insert( titleTooLong, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("title", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });
@@ -186,13 +224,19 @@ describe("Modules Title Validation", ()=> {
     }
 
     let questionTooLong = {
-      question: question,
       type: "SCENARIO",
+      question: question,
+      correct_answer: ['Normal'],
+      audio: "audio.ogg",
+      correct_audio: "correct.ogg",
+      image: "image.png"
     };
 
     Modules.insert( questionTooLong, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
+        should.equal("question", error.invalidKeys[0].name);
+        should.equal( error.invalidKeys.length, 1);
         should.equal(false, id);
         done();
       });

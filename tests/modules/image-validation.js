@@ -9,6 +9,7 @@ describe("Modules Image Validation", ()=> {
   it("Should reject a doc with no image if it is a SCENARIO", (done) => {
     let noImage = {
       type: "SCENARIO",
+      question: "Question",
       correct_answer: ['Normal'],
       audio: "audio.wav",
       correct_audio: "correct.wav",
@@ -28,6 +29,7 @@ describe("Modules Image Validation", ()=> {
   it("Should reject a doc with no image if it is a BINARY", (done) => {
     let noImage = {
       type: "BINARY",
+      question: "Question",
       correct_answer: ['No'],
       audio: "audio.wav",
       correct_audio: "correct.wav",

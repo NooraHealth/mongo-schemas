@@ -16,10 +16,11 @@ let ModuleSchema = new SimpleSchema({
     max: 100,
     custom: function() {
       type = this.field("type").value;
-      if( define.isQuestion(type) )
-        return this.value === undefined;
-      else
-        return this.value !== undefined;
+      if( define.isQuestion(type) && this.value !== undefined ) {
+        return "The title field for module type " + type + " should not be defined.";
+      } else if( !define.isQuestion(type) && this.value === undefined ) {
+        return "The title field for module type " + type + " must be defined.";
+      }
     }
   },
 
@@ -44,10 +45,10 @@ let ModuleSchema = new SimpleSchema({
     max: 150,
     custom: function() {
       type = this.field("type").value;
-      if( define.isQuestion(type) )
-        return this.value !== undefined;
-      else
-        return this.value === undefined;
+      if( define.isQuestion(type) && this.value === undefined ) {
+        return "The question field for module type " + type + " must be defined.";
+      } else if( !define.isQuestion(type) && this.value !== undefined )
+        return "The question field for module type " + type + " should not be defined.";
     }
   },
 
@@ -91,7 +92,7 @@ let ModuleSchema = new SimpleSchema({
       }
       else if(type == "MULTIPLE_CHOICE") {
         // If there are not 6 options
-        if( type.length != 6 )
+        if( this.value.length != 6 )
           return "Invalid options for MULTIPLE_CHOICE module: should be 6 options exactly";
 
         // If they are not properly formatted filenames
