@@ -85,7 +85,6 @@ describe("Modules Options Validation", ()=> {
     Modules.insert( module, function(error, id){
       module = Modules.findOne({_id: id});
       setTimeout(function(){
-        console.log(error);
         should.equal(3, module.options.length);
         should.not.equal(-1, module.options.indexOf('Normal'));
         should.not.equal(-1, module.options.indexOf('CallDoc'));
