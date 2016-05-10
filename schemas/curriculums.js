@@ -9,6 +9,14 @@ let CurriculumSchema = new SimpleSchema({
     min: 1,
     max: 40
   },
+  condition: {
+    type: String,
+    regEx: /^(Cardiac Surgery|Diabetes|Neonatology)$/
+  },
+  language: {
+    type: String,
+    regEx: /^(Hindi|English|Kannada|Tamil)$/
+  },
   lessons: {
     type:[String]
   }

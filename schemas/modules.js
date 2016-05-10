@@ -7,7 +7,7 @@ let Modules = new Mongo.Collection("nh_modules");
 let ModuleSchema = new SimpleSchema({
   type: {
     type: String,
-    regEx: /(MULTIPLE_CHOICE|SCENARIO|BINARY|VIDEO|SLIDE)/
+    regEx: /^(MULTIPLE_CHOICE|SCENARIO|BINARY|VIDEO|SLIDE)$/
   },
 
   title: {

@@ -9,6 +9,8 @@ describe("Curriculum Helpers", function() {
   it("Should have a helper getLessonDocuments", (done) => {
     let validCurriculum = {
       title: "Valid Title",
+      language: 'Kannada',
+      condition: 'Neonatology',
       lessons: []
     };
 
@@ -25,6 +27,8 @@ describe("Curriculum Helpers", function() {
   it("getLessonDocuments should return [] when curriculum has no lessons", (done) => {
     let validCurriculum = {
       title: "Valid Title",
+      language: 'Kannada',
+      condition: 'Neonatology',
       lessons: []
     };
 
@@ -49,6 +53,8 @@ describe("Curriculum Helpers", function() {
 
     let validCurriculum = {
       title: "Valid Title",
+      language: 'Kannada',
+      condition: 'Neonatology',
       lessons: [lesson._id]
     };
 
@@ -88,6 +94,8 @@ describe("Curriculum Helpers", function() {
 
     let validCurriculum = {
       title: "Valid Title",
+      language: 'Kannada',
+      condition: 'Neonatology',
       lessons: [lessonOneId, lessonTwoId]
     };
 
