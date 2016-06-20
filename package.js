@@ -1,6 +1,6 @@
 Package.describe({
   name: 'noorahealth:mongo-schemas',
-  version: '0.0.1',
+  version: '0.0.2',
   // Brief, one-line summary of the package.
   summary: 'Noora Healths mongo schemas, including Curriculums, Lessons, and Modules',
   // URL to the Git repository containing the source code for this package.
@@ -20,10 +20,12 @@ Package.onUse(function(api) {
   api.use('ground:db@0.3.15');
 
   api.addFiles([
-    'schemas/curriculums.js',
-    'schemas/lessons.js',
-    'schemas/modules.js',
+    'schemas/curriculums/curriculums.js',
+    'schemas/curriculums/lessons.js',
+    'schemas/curriculums/modules.js',
     'schemas/offline_files.js',
+    'schemas/conditions.js',
+    'schemas/facilities.js',
   ]);
   api.addFiles('publications/publications.js', "server");
   

@@ -1,8 +1,10 @@
 
-import { Curriculums } from '../schemas/curriculums.js';
-import { Lessons } from '../schemas/lessons.js';
-import { Modules } from '../schemas/modules.js';
+import { Curriculums } from '../schemas/curriculums/curriculums.js';
+import { Lessons } from '../schemas/curriculums/lessons.js';
+import { Modules } from '../schemas/curriculums/modules.js';
 import { OfflineFiles } from '../schemas/offline_files.js';
+import { Conditions } from '../schemas/conditions.js';
+import { Facilities } from '../schemas/facilities.js';
 
 Meteor.publish("modules.inLesson", function(lessonId) {
   if( !lessonId ) {
@@ -45,4 +47,13 @@ Meteor.publish("lessons.inCurriculum", function(curriculumId) {
 Meteor.publish( "lesson", function(id) {
   return Lessons.find({_id: id});
 });
+
+Meteor.publish("facilities.all", function() {
+  return Facilities.find({});
+});
+
+Meteor.publish("conditions.all", function() {
+  return Conditions.find({});
+});
+
 
