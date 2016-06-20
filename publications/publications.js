@@ -19,6 +19,14 @@ Meteor.publish("curriculums.all", function() {
   return Curriculums.find({});
 });
 
+Meteor.publish("facilities.all", function() {
+  return Facilities.find({});
+});
+
+Meteor.publish("conditions.all", function() {
+  return Conditions.find({});
+});
+
 Meteor.publish("curriculum", function(id) {
   if( !id ) return [];
   return Curriculums.find({_id: id});
@@ -45,16 +53,4 @@ Meteor.publish("modules.inLesson", function(lessonId) {
     return Modules.find( {_id: {$in: lesson.modules}} );
   }, Lessons.findOne( { _id: lessonId }, { fields: { modules: 1 } }));
 });
-
-<<<<<<< HEAD
-=======
-Meteor.publish("facilities.all", function() {
-  return Facilities.find({});
-});
-
-Meteor.publish("conditions.all", function() {
-  return Conditions.find({});
-});
-
->>>>>>> 2d8bb3d6372db6240a49ef067f7f0121f34cf9ef
 
