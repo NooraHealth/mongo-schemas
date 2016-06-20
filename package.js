@@ -16,6 +16,7 @@ Package.onUse(function(api) {
   api.use('aldeed:simple-schema@1.5.3');
   api.use('aldeed:collection2@2.9.1');
   api.use('mdg:validation-error@0.1.0');
+  api.use('peerlibrary:related@0.1.9');
   api.use('ground:db@0.3.15');
 
   api.addFiles([
