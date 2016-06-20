@@ -1,5 +1,6 @@
 
 import { Modules } from './modules.js';
+import { define } from './define.js';
 
 let Lessons = new Mongo.Collection("nh_lessons");
 
@@ -10,11 +11,10 @@ let LessonSchema = new SimpleSchema({
   },
   image: {
     type: String,
-    optional:true
+    regEx: define.imageFileRegEx
   },
   modules: {
-    type: [String],
-    optional:true
+    type: [String]
   }
 });
 

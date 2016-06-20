@@ -1,8 +1,10 @@
 
-import { Curriculums } from '../schemas/curriculums.js';
-import { Lessons } from '../schemas/lessons.js';
-import { Modules } from '../schemas/modules.js';
+import { Curriculums } from '../schemas/curriculums/curriculums.js';
+import { Lessons } from '../schemas/curriculums/lessons.js';
+import { Modules } from '../schemas/curriculums/modules.js';
 import { OfflineFiles } from '../schemas/offline_files.js';
+import { Conditions } from '../schemas/conditions.js';
+import { Facilities } from '../schemas/facilities.js';
 
 
 Meteor.publish("lessons.all", function() {
@@ -44,4 +46,15 @@ Meteor.publish("modules.inLesson", function(lessonId) {
   }, Lessons.findOne( { _id: lessonId }, { fields: { modules: 1 } }));
 });
 
+<<<<<<< HEAD
+=======
+Meteor.publish("facilities.all", function() {
+  return Facilities.find({});
+});
+
+Meteor.publish("conditions.all", function() {
+  return Conditions.find({});
+});
+
+>>>>>>> 2d8bb3d6372db6240a49ef067f7f0121f34cf9ef
 

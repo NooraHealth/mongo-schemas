@@ -1,2 +1,14 @@
+<<<<<<< HEAD
 .swp
 .swo
+=======
+/client/bower_components/
+*.swp
+*.swo
+/server/startup.coffee
+.uploads/
+.DS_store
+settings.json
+public/
+mup.json
+>>>>>>> 2d8bb3d6372db6240a49ef067f7f0121f34cf9ef
