@@ -175,6 +175,11 @@ let ModuleSchema = new SimpleSchema({
       else
         return this.value === undefined;
     }
+  },
+
+  is_active: {
+    type: Boolean,
+    defaultValue: true
   }
 });
 
