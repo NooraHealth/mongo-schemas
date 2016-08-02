@@ -92,7 +92,7 @@ let ModuleSchema = new SimpleSchema({
       }
       else if(type == "MULTIPLE_CHOICE") {
         // If there are not 6 options
-        if( this.value.length <= 6 && this.value.length % 2 !== 0 )
+        if( this.value.length > 6 || this.value.length === 0 || this.value.length % 2 !== 0 )
           return "Invalid options for MULTIPLE_CHOICE module: should be 2, 4, or 6 options exactly";
 
         // If they are not properly formatted filenames
