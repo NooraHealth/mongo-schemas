@@ -15,10 +15,6 @@ let LessonSchema = new SimpleSchema({
   },
   modules: {
     type: [String]
-  },
-  is_active: {
-    type: Boolean,
-    defaultValue: true
   }
 });
 

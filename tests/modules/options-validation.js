@@ -169,6 +169,119 @@ describe("Modules Options Validation", ()=> {
     });
   });
 
+  it("Should reject MULTIPLE_CHOICE questions with 3 options", (done) => {
+
+    options = [];
+    for(var i = 0; i < 3; i++) {
+      options.push("choice"+i+".png");
+    }
+
+    let module = {
+      type: "MULTIPLE_CHOICE",
+      question: "question",
+      image: "image.png",
+      audio: "audio.wav",
+      correct_audio: "audiosomething.wav",
+      options: options, 
+      correct_answer: ['choice0.png']
+    };
+
+    Modules.insert( module, function(error, id){
+      module = Modules.findOne({_id: id});
+      setTimeout(function(){
+        should.not.equal(null, error);
+        should.equal("options", error.invalidKeys[0].name);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(false, id);
+        done();
+      });
+    });
+  });
+
+  it("Should accept MULTIPLE_CHOICE questions with 2 options", (done) => {
+
+    options = [];
+    for(var i = 0; i < 2; i++) {
+      options.push("choice"+i+".png");
+    }
+
+    let module = {
+      type: "MULTIPLE_CHOICE",
+      question: "question",
+      image: "image.png",
+      audio: "audio.wav",
+      correct_audio: "audiosomething.wav",
+      options: options, 
+      correct_answer: ['choice0.png']
+    };
+
+    Modules.insert( module, function(error, id){
+      module = Modules.findOne({_id: id});
+      setTimeout(function(){
+        should.equal(null, error);
+        should.not.equal(false, id);
+        done();
+      });
+    });
+  });
+
+
+  it("Should reject MULTIPLE_CHOICE questions with 3 options", (done) => {
+
+    options = [];
+    for(var i = 0; i < 3; i++) {
+      options.push("choice"+i+".png");
+    }
+
+    let module = {
+      type: "MULTIPLE_CHOICE",
+      question: "question",
+      image: "image.png",
+      audio: "audio.wav",
+      correct_audio: "audiosomething.wav",
+      options: options, 
+      correct_answer: ['choice0.png']
+    };
+
+    Modules.insert( module, function(error, id){
+      module = Modules.findOne({_id: id});
+      setTimeout(function(){
+        should.not.equal(null, error);
+        should.equal("options", error.invalidKeys[0].name);
+        should.equal(error.invalidKeys.length, 1);
+        should.equal(false, id);
+        done();
+      });
+    });
+  });
+
+  it("Should accept MULTIPLE_CHOICE questions with 4 options", (done) => {
+
+    options = [];
+    for(var i = 0; i < 4; i++) {
+      options.push("choice"+i+".png");
+    }
+
+    let module = {
+      type: "MULTIPLE_CHOICE",
+      question: "question",
+      image: "image.png",
+      audio: "audio.wav",
+      correct_audio: "audiosomething.wav",
+      options: options, 
+      correct_answer: ['choice0.png']
+    };
+
+    Modules.insert( module, function(error, id){
+      module = Modules.findOne({_id: id});
+      setTimeout(function(){
+        should.equal(null, error);
+        should.not.equal(false, id);
+        done();
+      });
+    });
+  });
+
   it("Should reject MULTIPLE_CHOICE questions with 5 options", (done) => {
 
     options = [];
