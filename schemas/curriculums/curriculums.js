@@ -17,28 +17,41 @@ let CurriculumSchema = new SimpleSchema({
     type: String,
     regEx: /^(Hindi|English|Kannada|Tamil)$/
   },
-  lessons: {
-    type:[String]
+  introduction: {
+    type: String,
+    optional: true
+  },
+  beginner: {
+    type:[String],
+    defaultValue: []
+  },
+  intermediate: {
+    type:[String],
+    defaultValue: []
+  },
+  advanced: {
+    type:[String],
+    defaultValue: []
   }
 });
 
 Curriculums.attachSchema( CurriculumSchema );
 
-Curriculums.helpers({
-  getLessonDocuments: function() {
-    if( this.lessons ) {
-      let lessons = this.lessons.map( function( id ){
-        return Lessons.findOne( {_id: id} );
-      });
-      let filterNullValues = function(elem) {
-        console.log(elem);
-        return elem !== null;
-      };
-      return lessons.filter(filterNullValues);
-    } else
-      return [];
-  }
-});
+//Curriculums.helpers({
+  //getLessonDocuments: function() {
+    //if( this.lessons ) {
+      //let lessons = this.lessons.map( function( id ){
+        //return Lessons.findOne( {_id: id} );
+      //});
+      //let filterNullValues = function(elem) {
+        //console.log(elem);
+        //return elem !== null;
+      //};
+      //return lessons.filter(filterNullValues);
+    //} else
+      //return [];
+  //}
+//});
 
 Ground.Collection( Curriculums );
 

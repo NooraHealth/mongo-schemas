@@ -19,7 +19,10 @@ describe("Curriculum Schema", ()=> {
       title: "Valid Title",
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( validCurriculum, function(error, id){
@@ -35,7 +38,10 @@ describe("Curriculum Schema", ()=> {
     let noTitle = {
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( noTitle, function(error, id){
@@ -59,7 +65,10 @@ describe("Curriculum Schema", ()=> {
       title: title,
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( titleTooLong, function(error, id){
@@ -73,19 +82,22 @@ describe("Curriculum Schema", ()=> {
     });
   });
 
-  it("Should reject a curriculum with wrong type for lessons", (done) => {
+  it("Should reject a curriculum with wrong type for beginner", (done) => {
     let shouldBeAnArray = {
       title: "Valid title",
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: "Should be an array"
+      introduction: "",
+      beginner: "should be an array",
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( shouldBeAnArray, function(error, id){
       setTimeout(function(){
         should.not.equal(null, error);
         should.equal(error.invalidKeys.length, 1);
-        should.equal(error.invalidKeys[0].name, "lessons");
+        should.equal(error.invalidKeys[0].name, "beginner");
         should.equal(false, id);
         done();
       });
@@ -97,7 +109,10 @@ describe("Curriculum Schema", ()=> {
       title: "",
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( noTitle, function(error, id){
@@ -116,7 +131,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( kannada, function(error, id){
@@ -133,7 +151,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'English',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( english, function(error, id){
@@ -150,7 +171,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( hindi, function(error, id){
@@ -167,7 +191,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Hindi',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( hindi, function(error, id){
@@ -184,7 +211,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Hindil',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( hindil, function(error, id){
@@ -203,7 +233,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Enlish',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( enlish, function(error, id){
@@ -222,7 +255,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kanada',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( kanada, function(error, id){
@@ -241,7 +277,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'Cardiac Surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( cardiac, function(error, id){
@@ -258,7 +297,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'Diabetes',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( diabetes, function(error, id){
@@ -275,7 +317,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'Neonatology',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( neonatology, function(error, id){
@@ -292,7 +337,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'neonatology',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( neonatologyLowerCase, function(error, id){
@@ -311,7 +359,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'Neonatol',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( neonatol, function(error, id){
@@ -330,7 +381,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'CardiacSurgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( cardiacNoSpace, function(error, id){
@@ -349,7 +403,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'cardiac surgery',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( cardiacLowerCase, function(error, id){
@@ -368,7 +425,10 @@ describe("Curriculum Schema", ()=> {
       title: "title",
       language: 'Kannada',
       condition: 'diabetes',
-      lessons: []
+      introduction: "",
+      beginner: [],
+      intermediate: [],
+      advanced: []
     };
 
     Curriculums.insert( diabetesLowerCase, function(error, id){
