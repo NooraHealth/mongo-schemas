@@ -5,11 +5,8 @@ let OfflineFilesSchema = new SimpleSchema({
   fsPath: {
     type:String
   },
-  url: {
-    type:String
-  },
-  name: {
-    type:String
+  path: {
+    type: String
   }
 });
 

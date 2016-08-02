@@ -19,9 +19,6 @@ let CurriculumSchema = new SimpleSchema({
   },
   lessons: {
     type:[String]
-  },
-  last_updated: {
-    type: Date
   }
 });
 

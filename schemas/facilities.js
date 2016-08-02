@@ -1,6 +1,6 @@
 
 
-let Facilities = new Mongo.Collection("facilities");
+let Facilities = new Mongo.Collection("salesforce_facilities");
 
 let FacilitiesSchema = new SimpleSchema({
   name: {
