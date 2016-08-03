@@ -127,7 +127,6 @@ describe("Modules Title and Question Validation", ()=> {
 
     Modules.insert( title, function(error, id){
       setTimeout(function(){
-        console.log(error);
         should.not.equal(null, error);
         should.equal("title", error.invalidKeys[0].name);
         should.equal( error.invalidKeys.length, 1);

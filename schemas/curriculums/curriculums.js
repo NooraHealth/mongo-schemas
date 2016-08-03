@@ -37,21 +37,21 @@ let CurriculumSchema = new SimpleSchema({
 
 Curriculums.attachSchema( CurriculumSchema );
 
-//Curriculums.helpers({
-  //getLessonDocuments: function() {
-    //if( this.lessons ) {
-      //let lessons = this.lessons.map( function( id ){
-        //return Lessons.findOne( {_id: id} );
-      //});
-      //let filterNullValues = function(elem) {
-        //console.log(elem);
-        //return elem !== null;
-      //};
-      //return lessons.filter(filterNullValues);
-    //} else
-      //return [];
-  //}
-//});
+Curriculums.helpers({
+
+  getLessonDocuments: function() {
+    let filterEmptyValues = function(elem) {
+      return elem !== null && elem != undefined && elem != "";
+    };
+    const ids = [this.introduction].concat(this.beginner).concat(this.intermediate).concat(this.advanced);
+    const filtered = ids.filter(filterEmptyValues);
+    let docs = filtered.map( id =>{
+      return Lessons.findOne({_id: id});
+    });
+
+    return docs;
+  }
+});
 
 Ground.Collection( Curriculums );
 
